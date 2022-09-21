@@ -7,7 +7,7 @@ const port = 5500;
 app.use('/api', routes);
 
 app.get('/', (req: Request, res: Response): void => {
-  res.status(200).send('home page go to /api');
+  res.status(200).send('home page, go to /api');
 });
 
 app.listen(port, () => {
