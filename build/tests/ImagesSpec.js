@@ -62,7 +62,7 @@ describe('Test endpoint responses', function () {
         expect((0, func_1.checkPath)(validPath)).toBe(true);
         expect((0, func_1.checkPath)(invalidPath)).toBe(false);
     });
-    it('checkPath checks if number is valid [0<num>2000]', function () {
+    it('checkNumber checks if number is valid [0<num>2000]', function () {
         expect((0, func_1.checkNumber)(3000)).toBe(false);
         expect((0, func_1.checkNumber)(-1)).toBe(false);
         expect((0, func_1.checkNumber)(100)).toBe(true);

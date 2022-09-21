@@ -21,7 +21,7 @@ describe('Test endpoint responses', (): void => {
     expect(checkPath(invalidPath)).toBe(false);
   });
 
-  it('checkPath checks if number is valid [0<num>2000]', (): void => {
+  it('checkNumber checks if number is valid [0<num>2000]', (): void => {
     expect(checkNumber(3000)).toBe(false);
     expect(checkNumber(-1)).toBe(false);
     expect(checkNumber(100)).toBe(true);
