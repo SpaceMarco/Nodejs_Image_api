@@ -39,27 +39,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var express_1 = __importDefault(require("express"));
-var path_1 = __importDefault(require("path"));
-var logger_1 = __importDefault(require("../../middleware/logger"));
-var func_1 = require("../../functions/func");
-var Images = express_1.default.Router();
-Images.get('/', logger_1.default, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var name, imgloc, userwidth, userheight, _a, _b;
-    return __generator(this, function (_c) {
-        switch (_c.label) {
-            case 0:
-                name = req.query.filename;
-                imgloc = path_1.default.resolve("assets/full/".concat(name, ".jpg"));
-                userwidth = parseInt(req.query.width);
-                userheight = parseInt(req.query.height);
-                res.status(200);
-                _b = (_a = res).sendFile;
-                return [4 /*yield*/, (0, func_1.resize_func)(name, imgloc, userwidth, userheight)];
-            case 1:
-                _b.apply(_a, [_c.sent()]);
-                return [2 /*return*/];
-        }
-    });
-}); });
-exports.default = Images;
+var supertest_1 = __importDefault(require("supertest"));
+var Images_1 = __importDefault(require("../routes/api/Images"));
+var request = (0, supertest_1.default)(Images_1.default);
+describe('Test endpoint responses', function () {
+    it('gets the api endpoint', function (done) { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request.get('/images')];
+                case 1:
+                    response = _a.sent();
+                    expect(response.status).toBe(200);
+                    done();
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+});

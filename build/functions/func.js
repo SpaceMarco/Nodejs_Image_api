@@ -39,27 +39,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var express_1 = __importDefault(require("express"));
+exports.checkPathexist = exports.resize_func = void 0;
 var path_1 = __importDefault(require("path"));
-var logger_1 = __importDefault(require("../../middleware/logger"));
-var func_1 = require("../../functions/func");
-var Images = express_1.default.Router();
-Images.get('/', logger_1.default, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var name, imgloc, userwidth, userheight, _a, _b;
-    return __generator(this, function (_c) {
-        switch (_c.label) {
+var fs_1 = __importDefault(require("fs"));
+var sharp_1 = __importDefault(require("sharp"));
+var resize_func = function (name, imgloc, userheight, userwidth) { return __awaiter(void 0, void 0, void 0, function () {
+    var output;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
             case 0:
-                name = req.query.filename;
-                imgloc = path_1.default.resolve("assets/full/".concat(name, ".jpg"));
-                userwidth = parseInt(req.query.width);
-                userheight = parseInt(req.query.height);
-                res.status(200);
-                _b = (_a = res).sendFile;
-                return [4 /*yield*/, (0, func_1.resize_func)(name, imgloc, userwidth, userheight)];
+                output = path_1.default.resolve("assets/thumb/".concat(name, "(").concat(userwidth, "x").concat(userheight, ").jpg"));
+                return [4 /*yield*/, (0, sharp_1.default)(imgloc).resize(userheight, userwidth).toFile(output)];
             case 1:
-                _b.apply(_a, [_c.sent()]);
-                return [2 /*return*/];
+                _a.sent();
+                return [2 /*return*/, path_1.default.resolve(output)];
         }
     });
-}); });
-exports.default = Images;
+}); };
+exports.resize_func = resize_func;
+var checkPathexist = function (path) {
+    return fs_1.default.existsSync(path);
+};
+exports.checkPathexist = checkPathexist;

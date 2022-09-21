@@ -4,53 +4,18 @@ import logger from '../../middleware/logger';
 import { promises as fsPromises } from 'fs';
 import sharp from 'sharp';
 import { Console } from 'console';
+import fs from 'fs';
+import { resize_func } from '../../functions/func';
 
 const Images = express.Router();
 
-Images.get('/', logger, (req, res) => {
+Images.get('/', logger, async (req, res) => {
   const name = req.query.filename as string;
   const imgloc = path.resolve(`assets/full/${name}.jpg`);
   const userwidth = parseInt(req.query.width as string);
   const userheight = parseInt(req.query.height as string);
-  const output = path.resolve(
-    `assets/thumb/${name}(${userwidth}x${userheight}).jpg`
-  );
-  const outname = `${name}(${userwidth}x${userheight}).jpg`;
-
-  (async function () {
-    await sharp(imgloc)
-      .resize({ height: userheight, width: userwidth })
-      .toFile(output)
-      .then(function (newFileInfo) {
-        console.log('Success');
-        res.sendFile(path.resolve(output));
-      })
-      .catch(function (err) {
-        console.log('Error occured');
-      });
-  })();
+  res.status(200);
+  res.sendFile(await resize_func(name, imgloc, userwidth, userheight));
 });
-
-const resized_img = async (
-  inputPath: string,
-  _width: number,
-  _height: number,
-  output: string
-) => {
-  try {
-    await sharp(inputPath)
-      .resize({
-        width: _width,
-        height: _height,
-      })
-      .toFile(path.resolve('./' + output));
-
-    console.log('Successfully resized an image!');
-    console.log(path.resolve('./' + output));
-    return path.resolve('./' + output);
-  } catch (err) {
-    console.log(err);
-  }
-};
 
 export default Images;
