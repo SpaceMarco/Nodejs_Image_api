@@ -5,7 +5,7 @@ const routes: Router = express.Router();
 
 routes.use('/images', Images);
 
-routes.get('/', (req: Request, res: Response) => {
+routes.get('/', (req: Request, res: Response): void => {
   res
     .status(200)
     .send(

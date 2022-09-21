@@ -7,7 +7,7 @@ export const resize_func = async (
   imgloc: string,
   userheight: number,
   userwidth: number
-) => {
+): Promise<string> => {
   if (
     userheight > 2000 ||
     userheight < 0 ||

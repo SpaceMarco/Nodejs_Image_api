@@ -9,7 +9,7 @@ import { resize_func, checkPath, checkNumber } from '../../functions/func';
 
 const Images: Router = express.Router();
 
-Images.get('/', logger, async (req: Request, res: Response) => {
+Images.get('/', logger, async (req: Request, res: Response): Promise<void> => {
   const name = req.query.filename as string;
   const imgloc = path.resolve(`assets/full/${name}.jpg`) as string;
   const userwidth = parseInt(req.query.width as string);
