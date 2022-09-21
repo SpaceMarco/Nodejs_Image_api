@@ -46,14 +46,13 @@ var request = (0, supertest_1.default)(Images_1.default);
 var validPath = './assets/full/fjord.jpg';
 var invalidPath = './assets/full/jfordxxza.jpg';
 describe('Test endpoint responses', function () {
-    it('gets the api endpoint', function (done) { return __awaiter(void 0, void 0, void 0, function () {
+    it('checks api endpoint', function (done) { return __awaiter(void 0, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/')];
+                case 0: return [4 /*yield*/, request.get('./')];
                 case 1:
                     response = _a.sent();
-                    console.log(response.status);
                     expect(response.status).toBe(200);
                     done();
                     return [2 /*return*/];

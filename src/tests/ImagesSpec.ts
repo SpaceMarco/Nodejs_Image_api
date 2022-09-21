@@ -9,7 +9,7 @@ const validPath = './assets/full/fjord.jpg';
 const invalidPath = './assets/full/jfordxxza.jpg';
 
 describe('Test endpoint responses', () => {
-  it('gets the api endpoint', async (done) => {
+  it('checks api endpoint', async (done : DoneFn) => {
     const response = await request.get('/');
     expect(response.status).toBe(200);
     done();

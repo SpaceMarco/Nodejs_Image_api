@@ -19,6 +19,12 @@ export const resize_func = async (
   const output = path.resolve(
     `assets/thumb/${name}(${userwidth}x${userheight}).jpg`
   );
+
+  if (checkPath(output)) {
+    console.log('image already exists!');
+    return output;
+  }
+
   await sharp(imgloc).resize(userheight, userwidth).toFile(output);
   return path.resolve(output);
 };

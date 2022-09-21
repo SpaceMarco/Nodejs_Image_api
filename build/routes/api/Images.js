@@ -44,7 +44,7 @@ var path_1 = __importDefault(require("path"));
 var logger_1 = __importDefault(require("../../middleware/logger"));
 var func_1 = require("../../functions/func");
 var Images = express_1.default.Router();
-Images.get('/', logger_1.default, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+Images.get('/images', logger_1.default, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var name, imgloc, userwidth, userheight, _a, _b;
     return __generator(this, function (_c) {
         switch (_c.label) {

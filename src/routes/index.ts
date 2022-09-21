@@ -1,11 +1,11 @@
-import express from 'express';
+import express, { Router, Response, Request } from 'express';
 import Images from './api/Images';
 
-const routes = express.Router();
+const routes: Router = express.Router();
 
 routes.use('/images', Images);
 
-routes.get('/', (req, res) => {
+routes.get('/', (req: Request, res: Response) => {
   res.status(200);
   res.send(
     'Welcome to the image processing api project try: /images?filename=fjord&width=100&height=100'

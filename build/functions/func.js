@@ -54,6 +54,10 @@ var resize_func = function (name, imgloc, userheight, userwidth) { return __awai
                     return [2 /*return*/, 'NaN'];
                 }
                 output = path_1.default.resolve("assets/thumb/".concat(name, "(").concat(userwidth, "x").concat(userheight, ").jpg"));
+                if ((0, exports.checkPath)(output)) {
+                    console.log('image already exists!');
+                    return [2 /*return*/, output];
+                }
                 return [4 /*yield*/, (0, sharp_1.default)(imgloc).resize(userheight, userwidth).toFile(output)];
             case 1:
                 _a.sent();
