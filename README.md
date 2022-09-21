@@ -22,13 +22,13 @@ Project 1 submission for EGFWD full stack web development course
   
 ## **End Points:**<br/>
 ### endpoint '/' :
-- <sub>http://localhost:5500/</sub> is the root of the project.<br/>
+- ```http://localhost:5500/``` is the root of the project.<br/>
   ![image](https://user-images.githubusercontent.com/60396165/191621394-37568e20-5574-40ad-9f6c-9ad217e9b265.png)<br/>
 ### endpoint '/api' :
-- <sub>http://localhost:5500/api</sub> is a welome page of the api with instructions on how to display an image.<br/>
+- ```http://localhost:5500/api``` is a welome page of the api with instructions on how to display an image.<br/>
   ![image](https://user-images.githubusercontent.com/60396165/191621586-da1f1ed1-9551-4ca7-b1a6-680bdeb6f2ae.png)<br/>
 ### end[point '/images' :
-- <sub>http://localhost:5500/api/images</sub> is an image processing api, where the image processing instructions take place.<br/>
+- ```http://localhost:5500/api/images``` is an image processing api, where the image processing instructions take place.<br/>
 - if filename is not provided in the url, then the following messege will appear..<br/>
   ![image](https://user-images.githubusercontent.com/60396165/191621844-a12001ea-98ae-403c-bc76-643d5915c846.png)<br/>
 - if width or height are invalid, then the following messege will appear..<br/>
