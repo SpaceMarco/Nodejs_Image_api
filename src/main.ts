@@ -1,16 +1,13 @@
-import express from 'express';
+import express, { Application, Response, Request } from 'express';
 import routes from './routes/';
-import Images from './routes/api/Images';
 
-const app = express();
+const app: Application = express();
 const port = 5500;
 
 app.use('/api', routes);
-// app.use('/teachers', teachers);
-// app.use('/Images', Images);
-app.get('/', (req, res) => {
-  res.status(200);
-  res.send('home page');
+
+app.get('/', (req: Request, res: Response) => {
+  res.status(200).send('home page');
 });
 
 app.listen(port, () => {

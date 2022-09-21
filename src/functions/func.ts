@@ -33,6 +33,13 @@ export const checkPath = (inputpath: string): boolean => {
   return fs.existsSync(inputpath);
 };
 
+// const request = supertest(Images);
+// async ()=>{
+
+//   const response = await request.get('/');
+//   console.log('>>>the status is: ', response.status);
+// }
+
 export const checkNumber = (inputdata: number): boolean => {
   if (inputdata < 2000 && inputdata > 0) {
     return true;

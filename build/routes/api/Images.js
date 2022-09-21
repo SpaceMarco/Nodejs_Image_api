@@ -44,7 +44,7 @@ var path_1 = __importDefault(require("path"));
 var logger_1 = __importDefault(require("../../middleware/logger"));
 var func_1 = require("../../functions/func");
 var Images = express_1.default.Router();
-Images.get('/images', logger_1.default, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+Images.get('/', logger_1.default, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var name, imgloc, userwidth, userheight, _a, _b;
     return __generator(this, function (_c) {
         switch (_c.label) {
@@ -55,20 +55,19 @@ Images.get('/images', logger_1.default, function (req, res) { return __awaiter(v
                 userheight = parseInt(req.query.height);
                 if (!(0, func_1.checkPath)(imgloc)) return [3 /*break*/, 4];
                 if (!((0, func_1.checkNumber)(userwidth) && (0, func_1.checkNumber)(userheight))) return [3 /*break*/, 2];
-                res.status(200);
-                _b = (_a = res).sendFile;
+                _b = (_a = res
+                    .status(200))
+                    .sendFile;
                 return [4 /*yield*/, (0, func_1.resize_func)(name, imgloc, userwidth, userheight)];
             case 1:
                 _b.apply(_a, [_c.sent()]);
                 return [3 /*break*/, 3];
             case 2:
-                res.status(400);
-                res.send('please insert a valid width and height');
+                res.status(400).send('please insert a valid width and height');
                 _c.label = 3;
             case 3: return [3 /*break*/, 5];
             case 4:
-                res.status(400);
-                res.send('sorry picture not found');
+                res.status(400).send('sorry, picture not found!');
                 _c.label = 5;
             case 5: return [2 /*return*/];
         }

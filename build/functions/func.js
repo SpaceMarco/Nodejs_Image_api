@@ -70,6 +70,11 @@ var checkPath = function (inputpath) {
     return fs_1.default.existsSync(inputpath);
 };
 exports.checkPath = checkPath;
+// const request = supertest(Images);
+// async ()=>{
+//   const response = await request.get('/');
+//   console.log('>>>the status is: ', response.status);
+// }
 var checkNumber = function (inputdata) {
     if (inputdata < 2000 && inputdata > 0) {
         return true;

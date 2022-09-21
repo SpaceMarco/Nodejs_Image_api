@@ -7,10 +7,9 @@ import { Console } from 'console';
 import fs from 'fs';
 import { resize_func, checkPath, checkNumber } from '../../functions/func';
 
-const Images : Router = express.Router();
+const Images: Router = express.Router();
 
-Images.get('/images', logger, async (req: Request, res: Response) => {
-
+Images.get('/', logger, async (req: Request, res: Response) => {
   const name = req.query.filename as string;
   const imgloc = path.resolve(`assets/full/${name}.jpg`) as string;
   const userwidth = parseInt(req.query.width as string);
@@ -18,15 +17,15 @@ Images.get('/images', logger, async (req: Request, res: Response) => {
 
   if (checkPath(imgloc)) {
     if (checkNumber(userwidth) && checkNumber(userheight)) {
-      res.status(200);
-      res.sendFile(await resize_func(name, imgloc, userwidth, userheight));
+      res
+        .status(200)
+        .sendFile(await resize_func(name, imgloc, userwidth, userheight));
     } else {
-      res.status(400);
-      res.send('please insert a valid width and height');
+      res.status(400).send('please insert a valid width and height');
+      // res.send('please insert a valid width and height');
     }
   } else {
-    res.status(400);
-    res.send('sorry, picture not found!');
+    res.status(400).send('sorry, picture not found!');
   }
 });
 
