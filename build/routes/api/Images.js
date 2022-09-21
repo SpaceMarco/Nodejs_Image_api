@@ -53,12 +53,24 @@ Images.get('/', logger_1.default, function (req, res) { return __awaiter(void 0,
                 imgloc = path_1.default.resolve("assets/full/".concat(name, ".jpg"));
                 userwidth = parseInt(req.query.width);
                 userheight = parseInt(req.query.height);
+                if (!(0, func_1.checkPath)(imgloc)) return [3 /*break*/, 4];
+                if (!((0, func_1.checkNumber)(userwidth) && (0, func_1.checkNumber)(userheight))) return [3 /*break*/, 2];
                 res.status(200);
                 _b = (_a = res).sendFile;
                 return [4 /*yield*/, (0, func_1.resize_func)(name, imgloc, userwidth, userheight)];
             case 1:
                 _b.apply(_a, [_c.sent()]);
-                return [2 /*return*/];
+                return [3 /*break*/, 3];
+            case 2:
+                res.status(400);
+                res.send('please insert a valid width and height');
+                _c.label = 3;
+            case 3: return [3 /*break*/, 5];
+            case 4:
+                res.status(400);
+                res.send('sorry picture not found');
+                _c.label = 5;
+            case 5: return [2 /*return*/];
         }
     });
 }); });

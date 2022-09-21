@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.checkPathexist = exports.resize_func = void 0;
+exports.checkNumber = exports.checkPath = exports.resize_func = void 0;
 var path_1 = __importDefault(require("path"));
 var fs_1 = __importDefault(require("fs"));
 var sharp_1 = __importDefault(require("sharp"));
@@ -48,6 +48,11 @@ var resize_func = function (name, imgloc, userheight, userwidth) { return __awai
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
+                if (userheight > 2000 ||
+                    userheight < 0 ||
+                    (userwidth > 2000 && userwidth < 0)) {
+                    return [2 /*return*/, 'NaN'];
+                }
                 output = path_1.default.resolve("assets/thumb/".concat(name, "(").concat(userwidth, "x").concat(userheight, ").jpg"));
                 return [4 /*yield*/, (0, sharp_1.default)(imgloc).resize(userheight, userwidth).toFile(output)];
             case 1:
@@ -57,7 +62,16 @@ var resize_func = function (name, imgloc, userheight, userwidth) { return __awai
     });
 }); };
 exports.resize_func = resize_func;
-var checkPathexist = function (path) {
-    return fs_1.default.existsSync(path);
+var checkPath = function (inputpath) {
+    return fs_1.default.existsSync(inputpath);
 };
-exports.checkPathexist = checkPathexist;
+exports.checkPath = checkPath;
+var checkNumber = function (inputdata) {
+    if (inputdata < 2000 && inputdata > 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+};
+exports.checkNumber = checkNumber;

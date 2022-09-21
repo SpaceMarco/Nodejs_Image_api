@@ -8,6 +8,14 @@ export const resize_func = async (
   userheight: number,
   userwidth: number
 ) => {
+  if (
+    userheight > 2000 ||
+    userheight < 0 ||
+    (userwidth > 2000 && userwidth < 0)
+  ) {
+    return 'NaN';
+  }
+
   const output = path.resolve(
     `assets/thumb/${name}(${userwidth}x${userheight}).jpg`
   );
@@ -15,6 +23,14 @@ export const resize_func = async (
   return path.resolve(output);
 };
 
-export const checkPathexist = (path: string): boolean => {
-  return fs.existsSync(path);
+export const checkPath = (inputpath: string): boolean => {
+  return fs.existsSync(inputpath);
+};
+
+export const checkNumber = (inputdata: number): boolean => {
+  if (inputdata < 2000 && inputdata > 0) {
+    return true;
+  } else {
+    return false;
+  }
 };
