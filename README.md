@@ -28,7 +28,7 @@ Project 1 submission for EGFWD full stack web development course
 - ```http://localhost:5500/api``` is a welome page of the api with instructions on how to display an image.<br/>
   ![image](https://user-images.githubusercontent.com/60396165/191621586-da1f1ed1-9551-4ca7-b1a6-680bdeb6f2ae.png)<br/>
 ### end[point '/images' :
-- ```http://localhost:5500/api/images``` is an image processing api, where the image processing instructions take place.<br/>
+- ```http://localhost:5500/api/images``` is the image processing api, where the image processing instructions take place.<br/>
 - if filename is not provided in the url, then the following messege will appear..<br/>
   ![image](https://user-images.githubusercontent.com/60396165/191621844-a12001ea-98ae-403c-bc76-643d5915c846.png)<br/>
 - if width or height are invalid, then the following messege will appear..<br/>
