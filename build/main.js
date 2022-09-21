@@ -9,8 +9,9 @@ var app = (0, express_1.default)();
 var port = 5500;
 app.use('/api', routes_1.default);
 app.get('/', function (req, res) {
-    res.status(200).send('home page');
+    res.status(200).send('home page go to /api');
 });
 app.listen(port, function () {
     console.log("server started at http://localhost:".concat(port));
 });
+exports.default = app;

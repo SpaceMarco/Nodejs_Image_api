@@ -16,6 +16,10 @@ export const resize_func = async (
     return 'NaN';
   }
 
+  if (!fs.existsSync(imgloc)) {
+    return 'NaN';
+  }
+
   const output = path.resolve(
     `assets/thumb/${name}(${userwidth}x${userheight}).jpg`
   );
@@ -32,13 +36,6 @@ export const resize_func = async (
 export const checkPath = (inputpath: string): boolean => {
   return fs.existsSync(inputpath);
 };
-
-// const request = supertest(Images);
-// async ()=>{
-
-//   const response = await request.get('/');
-//   console.log('>>>the status is: ', response.status);
-// }
 
 export const checkNumber = (inputdata: number): boolean => {
   if (inputdata < 2000 && inputdata > 0) {

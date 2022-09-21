@@ -7,9 +7,11 @@ const port = 5500;
 app.use('/api', routes);
 
 app.get('/', (req: Request, res: Response) => {
-  res.status(200).send('home page');
+  res.status(200).send('home page go to /api');
 });
 
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
 });
+
+export default app;

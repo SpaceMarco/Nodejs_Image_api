@@ -40,21 +40,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var supertest_1 = __importDefault(require("supertest"));
-var Images_1 = __importDefault(require("../routes/api/Images"));
+var main_1 = __importDefault(require("../main"));
 var func_1 = require("../functions/func");
-var request = (0, supertest_1.default)(Images_1.default);
+var request = (0, supertest_1.default)(main_1.default);
 var validPath = './assets/full/fjord.jpg';
 var invalidPath = './assets/full/jfordxxza.jpg';
 describe('Test endpoint responses', function () {
-    it('checks api endpoint', function (done) { return __awaiter(void 0, void 0, void 0, function () {
+    it('checks api endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/?filename=fjord&width=100&height=800')];
+                case 0: return [4 /*yield*/, request.get('/')];
                 case 1:
                     response = _a.sent();
                     expect(response.status).toBe(200);
-                    done();
                     return [2 /*return*/];
             }
         });
@@ -63,11 +62,29 @@ describe('Test endpoint responses', function () {
         expect((0, func_1.checkPath)(validPath)).toBe(true);
         expect((0, func_1.checkPath)(invalidPath)).toBe(false);
     });
-    it('checks if path is valid but size is wrong will = false', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('checkPath checks if number is valid [0<num>2000]', function () {
+        expect((0, func_1.checkNumber)(3000)).toBe(false);
+        expect((0, func_1.checkNumber)(-1)).toBe(false);
+        expect((0, func_1.checkNumber)(100)).toBe(true);
+        expect((0, func_1.checkNumber)(500)).toBe(true);
+    });
+    it('checks if path is valid but size is wrong, will = false', function () { return __awaiter(void 0, void 0, void 0, function () {
         var res;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, (0, func_1.resize_func)('fjord', validPath, -1, 3000)];
+                case 1:
+                    res = _a.sent();
+                    expect((0, func_1.checkPath)(res)).toBeFalsy();
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('checks if size is valid but path is wrong, will = false', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var res;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0, func_1.resize_func)('fjordzzz', invalidPath, 100, 100)];
                 case 1:
                     res = _a.sent();
                     expect((0, func_1.checkPath)(res)).toBeFalsy();

@@ -53,6 +53,9 @@ var resize_func = function (name, imgloc, userheight, userwidth) { return __awai
                     (userwidth > 2000 && userwidth < 0)) {
                     return [2 /*return*/, 'NaN'];
                 }
+                if (!fs_1.default.existsSync(imgloc)) {
+                    return [2 /*return*/, 'NaN'];
+                }
                 output = path_1.default.resolve("assets/thumb/".concat(name, "(").concat(userwidth, "x").concat(userheight, ").jpg"));
                 if ((0, exports.checkPath)(output)) {
                     console.log('image already exists!');
@@ -70,11 +73,6 @@ var checkPath = function (inputpath) {
     return fs_1.default.existsSync(inputpath);
 };
 exports.checkPath = checkPath;
-// const request = supertest(Images);
-// async ()=>{
-//   const response = await request.get('/');
-//   console.log('>>>the status is: ', response.status);
-// }
 var checkNumber = function (inputdata) {
     if (inputdata < 2000 && inputdata > 0) {
         return true;
