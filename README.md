@@ -36,4 +36,4 @@ Project 1 submission for EGFWD full stack web development course
 ### valid URL: <sub>http://localhost:5500/api/images?filename=fjord&width=100&height=100</sub><br/>
 
 ## **Testing result with jasmine and supertest for endpoint testing:**<br/>
-  ![image](https://user-images.githubusercontent.com/60396165/191519272-187c96ef-8b52-4f75-8fb9-face511b88af.png)
+  ![image](https://user-images.githubusercontent.com/60396165/191624929-0046dbd8-a6cc-44c9-a792-7c1c0fea4d0f.png)
